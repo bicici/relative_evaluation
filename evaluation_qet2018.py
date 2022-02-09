@@ -51,6 +51,7 @@ def calculateScores(y, y_pred):
         epsilon = absd_tmean[absd_tmean > 0].min()
         if epsilon == 0:
             epsilon = absy[absy > 0].min()
+    absy = clip(absy, epsilon, None)
     absy[absy == 0] = epsilon
     MAER = absd_target / absy
     absd_tmean = clip(absd_tmean, epsilon, None)
